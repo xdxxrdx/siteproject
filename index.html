@@ -1,42 +1,57 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset = "utf-8">
-		<title>XDXXRDX</title>
-		<style>
-			body {
-				background-color: black;
-				color: white;
-			}
-			button {
-				background-color: yellow;
-				color: black;
-				padding: 10px 20px;
-				border: none;
-				border-radius: 5px; 
-				cursor: pointer;
-			}
-		</style>
-	</head>
-	
-	<body>
-	<center>
-	<h1>XDXXRDX</h1>
-	</center>
-	
-	<center>
-	
-	<script>
-	function segredo() {
-		alert("XDXXRDX significa EDUARDO")
-	}
-	</script>
-	
-		<button onclick="segredo()">DESCUBRA</button></br></br>
-		
-	<a href="https://www.instagram.com/xdxxrdx">INSTAGRAM</a></br>
-	
-	
-	</center>
-	</body>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Senha</title>
+    <style>
+        body {
+            background-color: black; /* Tela preta */
+            color: white;           /* Texto branco */
+            text-align: center;      /* Centraliza o texto */
+            font-family: sans-serif; /* Fonte sem serifa */
+        }
+
+        #tela-inicial {
+            display: block;     /* Exibe a tela inicial */
+        }
+
+        #tela-mensagem {
+            display: none;    /* Oculta a tela de mensagem */
+        }
+
+        #input-senha {
+            margin-top: 20px; /* Espaçamento entre a instrução e o campo */
+        }
+    </style>
+</head>
+<body>
+    <div id="tela-inicial">
+        <h1>Digite a Senha</h1>
+        <input type="password" id="senha" placeholder="Insira a senha">
+        <button onclick="verificarSenha()">Entrar</button>
+    </div>
+
+    <div id="tela-mensagem">
+        <p id="mensagem"></p>
+    </div>
+
+    <script>
+        function verificarSenha() {
+            const senhaDigitada = document.getElementById('senha').value;
+            const senhaCorreta = '10032024';
+
+            if (senhaDigitada === senhaCorreta) {
+                document.getElementById('tela-inicial').style.display = 'none';
+                document.getElementById('tela-mensagem').style.display = 'block';
+                document.getElementById('mensagem').textContent = 'Eu te amo!';
+            } else {
+                document.getElementById('mensagem').textContent = 'Senha inválida';
+            }
+        }
+    </script>
+</body>
 </html>
+
+<!-- Fontes: -->
+<!-- 1. https://hcode.com.br/blog/instalando-sql-server-e-conectando-com-php -->
