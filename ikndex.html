@@ -1,74 +1,79 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Senha</title>
-    <style>
-        body {
-            background-color: black; /* Tela preta */
-            color: white;           /* Texto branco */
-            text-align: center;      /* Centraliza o texto */
-            font-family: sans-serif; /* Fonte sem serifa */
-        }
-
-        #tela-inicial {
-            display: block;     /* Exibe a tela inicial */
-        }
-
-        #tela-mensagem {
-            display: none;    /* Oculta a tela de mensagem */
-        }
-
-        #input-senha {
-            margin-top: 20px; /* Espaçamento entre a instrução e o campo */
-        }
-
-        #mensagem-amor {
-            font-size: 16px; /* Tamanho da fonte da declaração */
-            line-height: 1.5; /* Espaçamento entre linhas */
-            margin-top: 20px; /* Espaçamento após a mensagem de boas-vindas */
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contagem Regressiva</title>
+  <style>
+    body {
+      background-color: #Ffff00;
+      color: #000000;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    #countdown {
+      font-size: 3em;
+      letter-spacing: 2px;
+    }
+    .teaser {
+      margin-top: 30px;
+      font-size: 1.2em;
+      opacity: 0.8;
+    }
+    .snoopy {
+      margin-top: 40px;
+      max-width: 250px;
+      height: auto;
+    }
+  </style>
 </head>
 <body>
-    <div id="tela-inicial">
-        <h1>Digite a Senha</h1>
-        <input type="password" id="senha" placeholder="Insira a senha">
-        <button onclick="verificarSenha()">Entrar</button>
-    </div>
+  
+  <div id="countdown"></div>
+  <div class="teaser">20.05</div>
 
-    <div id="tela-mensagem">
-        <p id="mensagem-boas-vindas">Meu amor,</p>
-        <p id="mensagem-amor"></p>
-    </div>
+ <img 
+  src="https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png" 
+  alt="Snoopy com chapéu de festa" 
+  class="snoopy"
+/>
 
-    <script>
-        function verificarSenha() {
-            const senhaDigitada = document.getElementById('senha').value;
-            const senhaCorreta = '10032024';
 
-            if (senhaDigitada === senhaCorreta) {
-                document.getElementById('tela-inicial').style.display = 'none';
-                document.getElementById('tela-mensagem').style.display = 'block';
-                document.getElementById('mensagem-amor').textContent = `
-                    QUE FELICIDADE PODER TE TER COMO MEU NAMORADO, VOCÊ É UMA DAS PESSOAS MAIS DOCES QUE EU TIVE O PRAZER DE CONHECER, E QUE DELÍCIA É ME LAMBUZAR NA SUA DOÇURA! HAHAHA. 
-                    NUNCA NINGUÉM TINHA ME FEITO AMAR DE UMA FORMA TÃO CALMA, É UM AMOR TOTALMENTE NOVO, SE EU PUDESSE COMPARAR COM UMA PAISAGEM, NOSSO AMOR SERIA UM PARQUE, NÃO COMO AQUELES PARQUES DE DIVERSÕES CAINDO AOS PEDAÇOS DE FERRUGEM, MAS COMO AQUELES COM GRAMA E UM LAGO NUM FIM DE TARDE, TUDO MUITO LINDO, TUDO MUITO CHEIROSO. 
-                    “Por ser exato
-                    O amor não cabe em si
-                    Por ser encantado
-                    O amor revela-se
-                    Por ser amor
-                    Invade
-                    E fim.” 
-                    NÃO SEI SE AINDA SOBROU DECLARAÇÕES OU FORMAS DE EXPRESSAR MEU AMORR QUE EU JÁ NÃO TENHA FEITO, MODESTIA A PARTE HEHEH
-                    MAS É ISSO, EU PODERIA FICAR AQUI FALANDO MIL VEZES O QUANTO TE AMO, MAS GOSTO DE PENSAR QUE VOCÊ SABE, AINDA ASSIM... TE AMO GATINHO!
-                    OBRIGADO POR SER PAZ, OBRIGADO POR SER LUZ, OBRIGADO POR SER MEU NAMORADO.
-                `;
-            } else {
-                document.getElementById('mensagem-amor').textContent = 'Senha inválida';
-            }
-        }
-    </script>
+  <script>
+    const targetDate = new Date("2025-05-20T00:00:00").getTime();
+    const countdown = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        countdown.innerHTML = "É hoje!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
+
+          
