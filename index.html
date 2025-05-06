@@ -1,69 +1,78 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Senha</title>
-    <style>
-        body {
-            background-color: black; /* Tela preta */
-            color: white;           /* Texto branco */
-            text-align: center;      /* Centraliza o texto */
-            font-family: sans-serif; /* Fonte sem serifa */
-        }
-
-        #tela-inicial {
-            display: block;     /* Exibe a tela inicial */
-        }
-
-        #tela-mensagem {
-            display: none;    /* Oculta a tela de mensagem */
-        }
-
-        #input-senha {
-            margin-top: 20px; /* Espaçamento entre a instrução e o campo */
-        }
-
-        #mensagem-amor {
-            font-size: 16px; /* Tamanho da fonte da declaração */
-            line-height: 1.5; /* Espaçamento entre linhas */
-            margin-top: 20px; /* Espaçamento após a mensagem de boas-vindas */
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contagem Regressiva</title>
+  <style>
+    body {
+      background-color: #Ffff00;
+      color: #000000;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    #countdown {
+      font-size: 3em;
+      letter-spacing: 2px;
+    }
+    .teaser {
+      margin-top: 30px;
+      font-size: 1.2em;
+      opacity: 0.8;
+    }
+    .snoopy {
+      margin-top: 40px;
+      max-width: 250px;
+      height: auto;
+    }
+  </style>
 </head>
 <body>
-    <div id="tela-inicial">
-        <h1>6 meses é meio ano!</h1>
-        <input type="password" id="senha" placeholder="Insira a senha">
-        <button onclick="verificarSenha()">Entrar</button>
-    </div>
+  
+  <div id="countdown"></div>
+  <div class="teaser">20.05</div>
 
-    <div id="tela-mensagem">
-        <p id="mensagem-boas-vindas">Meu amor,</p>
-        <p id="mensagem-amor"></p>
-    </div>
+ <img 
+  src="https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png" 
+  alt="Snoopy com chapéu de festa" 
+  class="snoopy"
+/>
 
-    <script>
-        function verificarSenha() {
-            const senhaDigitada = document.getElementById('senha').value;
-            const senhaCorreta = '18062024';
 
-            if (senhaDigitada === senhaCorreta) {
-                document.getElementById('tela-inicial').style.display = 'none';
-                document.getElementById('tela-mensagem').style.display = 'block';
-                document.getElementById('mensagem-amor').textContent = `
-    <p>Há 6 meses você me faz entender o que a Taylor estava sentindo quando escreveu “Eles acham que o amor é para mostrar, mas eu morreria por você em segredo.</p>
-    <p>Quem sou eu quando não tem ninguém olhando? Eu sou apaixonado por você, com ou sem plateia, porque eu sinto que nosso amor é sobre nós, e é uma paz enorme poder dizer isso.</p>
-    <p>Gabriel, eu espero que eu consiga ajudar a alegrar seus dias tanto quanto você ajuda a alegrar os meus. Eu te admiro tanto enquanto ser namorado e amigo. Que sorte minha poder ter essas duas versões. Um companheiro pra vida!</p>
-    <p>Lembro no começo, quando estávamos entendendo como íamos nos encaixar na vida um do outro, como eu me preocupava, até mesmo com a forma que eu te chamava, pra mim, se eu não te chamasse de babu eu não estaria sendo íntimo kkkkkk, mas é engraçado pensar como o tempo dissolveu essas preocupações, Gabriel, babu, meu bem, B, mo, independente do nome, a certeza que eu tenho é do que eu sinto, e isso não muda :))</p>
-    <p>Obrigado de novo, por estar fazendo parte desse momento tão feliz da minha vida, você é especial demais pra mim, meu Gabrielzinho, meu babuzinho, meu gatinho!</p>
-    <p>Espero que possamos comemorar muitos mais meses e anos pela frente!</p>
-    <p>Mal posso esperar pra saber o que o futuro nos reserva &lt;3</p>
-                `;
-            } else {
-                document.getElementById('mensagem-amor').textContent = 'Senha inválida';
-            }
-        }
-    </script>
+  <script>
+    const targetDate = new Date("2025-05-20T00:00:00").getTime();
+    const countdown = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        countdown.innerHTML = "É hoje!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
+
